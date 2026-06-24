@@ -153,13 +153,15 @@ export const ChatMessage = ({
 
   return (
     <div
-      className={`${
+      className={cn(
+        'rounded-2xl px-5 py-3 animate-fade-in-up transition-all duration-300',
         message.role === 'user'
-          ? 'max-w-[80%] bg-primary text-primary-foreground'
+          ? 'max-w-[80%] message-bubble-user'
           : message.isError
-            ? 'w-[95%] bg-red-100 text-red-600 dark:bg-red-950 dark:text-red-400'
-            : 'w-[95%] bg-muted'
-      } rounded-lg px-4 py-2`}
+            ? 'w-[95%] bg-red-100/80 text-red-600 dark:bg-red-950/60 dark:text-red-400 border border-red-200 dark:border-red-800/50'
+            : 'w-[95%] message-bubble-assistant'
+      )}
+      style={{ animationDuration: '0.35s' }}
     >
       {/* Thinking process display - only for assistant messages */}
       {/* Always render to prevent layout shift when switching tabs */}
@@ -230,13 +232,13 @@ export const ChatMessage = ({
       {/* Main content display */}
       {finalDisplayContent && (
         <div className="relative">
-          <div className={`prose dark:prose-invert max-w-none text-sm break-words prose-headings:mt-4 prose-headings:mb-2 prose-p:my-2 prose-ul:my-2 prose-ol:my-2 prose-li:my-1 [&_.katex]:text-current [&_.katex-display]:my-4 [&_.katex-display]:max-w-full [&_.katex-display_>.base]:overflow-x-auto [&_sup]:text-[0.75em] [&_sup]:align-[0.1em] [&_sup]:leading-[0] [&_sub]:text-[0.75em] [&_sub]:align-[-0.2em] [&_sub]:leading-[0] [&_mark]:bg-yellow-200 [&_mark]:dark:bg-yellow-800 [&_u]:underline [&_del]:line-through [&_ins]:underline [&_ins]:decoration-green-500 [&_.footnotes]:mt-8 [&_.footnotes]:pt-4 [&_.footnotes]:border-t [&_.footnotes_ol]:text-sm [&_.footnotes_li]:my-1 ${
-            message.role === 'user' ? 'text-primary-foreground' : 'text-foreground'
-          } ${
+          <div className={cn(
+            'prose dark:prose-invert max-w-none text-sm break-words prose-headings:mt-4 prose-headings:mb-2 prose-p:my-2 prose-ul:my-2 prose-ol:my-2 prose-li:my-1 [&_.katex]:text-current [&_.katex-display]:my-4 [&_.katex-display]:max-w-full [&_.katex-display_>.base]:overflow-x-auto [&_sup]:text-[0.75em] [&_sup]:align-[0.1em] [&_sup]:leading-[0] [&_sub]:text-[0.75em] [&_sub]:align-[-0.2em] [&_sub]:leading-[0] [&_mark]:bg-yellow-200 [&_mark]:dark:bg-yellow-800 [&_u]:underline [&_del]:line-through [&_ins]:underline [&_ins]:decoration-green-500 [&_.footnotes]:mt-8 [&_.footnotes]:pt-4 [&_.footnotes]:border-t [&_.footnotes_ol]:text-sm [&_.footnotes_li]:my-1',
+            message.role === 'user' ? 'text-[hsl(20_10%_8%)] dark:text-[hsl(0_0%_97%)] prose-headings:text-[hsl(20_10%_8%)] dark:prose-headings:text-[hsl(0_0%_97%)]' : 'text-foreground',
             message.role === 'user'
-              ? '[&_.footnotes]:border-primary-foreground/30 [&_a[href^="#fn"]]:text-primary-foreground [&_a[href^="#fn"]]:no-underline [&_a[href^="#fn"]]:hover:underline [&_a[href^="#fnref"]]:text-primary-foreground [&_a[href^="#fnref"]]:no-underline [&_a[href^="#fnref"]]:hover:underline'
+              ? '[&_.footnotes]:border-black/20 dark:[&_.footnotes]:border-white/20 [&_a[href^="#fn"]]:text-[hsl(20_10%_8%)] dark:[&_a[href^="#fn"]]:text-[hsl(0_0%_97%)] [&_a[href^="#fn"]]:no-underline [&_a[href^="#fn"]]:hover:underline [&_a[href^="#fnref"]]:text-[hsl(20_10%_8%)] dark:[&_a[href^="#fnref"]]:text-[hsl(0_0%_97%)] [&_a[href^="#fnref"]]:no-underline [&_a[href^="#fnref"]]:hover:underline'
               : '[&_.footnotes]:border-border [&_a[href^="#fn"]]:text-primary [&_a[href^="#fn"]]:no-underline [&_a[href^="#fn"]]:hover:underline [&_a[href^="#fnref"]]:text-primary [&_a[href^="#fnref"]]:no-underline [&_a[href^="#fnref"]]:hover:underline'
-          }`}>
+          )}>
             <ReactMarkdown
               remarkPlugins={[remarkGfm, remarkFootnotes, remarkMath]}
               rehypePlugins={[

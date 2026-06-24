@@ -6,10 +6,49 @@ import { loginToServer, getAuthStatus } from '@/api/lightrag'
 import { toast } from 'sonner'
 import { useTranslation } from 'react-i18next'
 import { Card, CardContent, CardHeader } from '@/components/ui/Card'
+import { SiteInfo } from '@/lib/constants'
 import Input from '@/components/ui/Input'
 import Button from '@/components/ui/Button'
-import { ZapIcon } from 'lucide-react'
+import { ShieldCheckIcon, ArrowRightIcon } from 'lucide-react'
 import AppSettings from '@/components/AppSettings'
+import BusIcon from '@/components/icons/BusIcon'
+
+// Animated background particles component
+function AnimatedBackground() {
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {/* Gradient orbs */}
+      <div className="absolute -top-1/4 -left-1/4 w-[600px] h-[600px] rounded-full bg-primary/10 blur-[100px] animate-float" />
+      <div className="absolute -bottom-1/4 -right-1/4 w-[500px] h-[500px] rounded-full bg-accent/10 blur-[100px] animate-float" style={{ animationDelay: '-1.5s' }} />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-primary/5 blur-[80px] animate-float" style={{ animationDelay: '-3s' }} />
+
+      {/* Grid pattern overlay */}
+      <div
+        className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]"
+        style={{
+          backgroundImage: 'linear-gradient(hsl(var(--primary)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--primary)) 1px, transparent 1px)',
+          backgroundSize: '60px 60px'
+        }}
+      />
+
+      {/* Floating dots */}
+      {[...Array(6)].map((_, i) => (
+        <div
+          key={i}
+          className="absolute rounded-full bg-primary/20 blur-sm animate-float"
+          style={{
+            width: `${4 + i * 2}px`,
+            height: `${4 + i * 2}px`,
+            left: `${15 + i * 14}%`,
+            top: `${20 + (i % 3) * 25}%`,
+            animationDelay: `${-i * 0.7}s`,
+            animationDuration: `${3 + i * 0.5}s`
+          }}
+        />
+      ))}
+    </div>
+  )
+}
 
 const LoginPage = () => {
   const navigate = useNavigate()
@@ -81,7 +120,16 @@ const LoginPage = () => {
 
   // Don't render anything while checking auth
   if (checkingAuth) {
-    return null
+    return (
+      <div className="flex h-screen w-screen items-center justify-center bg-gradient-to-br from-orange-50/50 to-amber-100/50 dark:from-background dark:to-muted/30">
+        <div className="flex flex-col items-center gap-4">
+          <div className="relative flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-accent animate-pulse-glow">
+            <BusIcon className="h-5 w-8" aria-hidden="true" />
+          </div>
+          <p className="text-sm text-muted-foreground animate-pulse">Loading...</p>
+        </div>
+      </div>
+    )
   }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -145,60 +193,89 @@ const LoginPage = () => {
   }
 
   return (
-    <div className="flex h-screen w-screen items-center justify-center bg-gradient-to-br from-emerald-50 to-teal-100 dark:from-gray-900 dark:to-gray-800">
-      <div className="absolute top-4 right-4 flex items-center gap-2">
-        <AppSettings className="bg-white/30 dark:bg-gray-800/30 backdrop-blur-sm rounded-md" />
+    <div className="relative flex h-screen w-screen items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 via-emerald-50/30 to-teal-100/40 dark:from-gray-950 dark:via-gray-900 dark:to-gray-800">
+      <AnimatedBackground />
+
+      <div className="absolute top-4 right-4 flex items-center gap-2 z-10">
+        <AppSettings className="glass rounded-lg" />
       </div>
-      <Card className="w-full max-w-[480px] shadow-lg mx-4">
-        <CardHeader className="flex items-center justify-center space-y-2 pb-8 pt-6">
+
+      <Card className="relative w-full max-w-[440px] mx-4 border-border/50 shadow-2xl shadow-primary/5 hover-lift animate-scale-in overflow-hidden">
+        {/* Top gradient accent line */}
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-accent to-primary animate-shimmer" />
+
+        <CardHeader className="flex items-center justify-center space-y-3 pb-6 pt-8">
           <div className="flex flex-col items-center space-y-4">
-            <div className="flex items-center gap-3">
-              <img src="logo.svg" alt="LightRAG Logo" className="h-12 w-12" />
-              <ZapIcon className="size-10 text-emerald-400" aria-hidden="true" />
+            {/* Logo with glow effect */}
+            <div className="relative">
+              <div className="absolute inset-0 bg-primary/20 blur-2xl rounded-full scale-150 animate-pulse" />
+              <div className="relative flex items-center justify-center w-20 h-16 rounded-2xl bg-gradient-to-br from-primary to-accent shadow-lg shadow-primary/30 px-2">
+                <BusIcon className="h-10 w-16" aria-hidden="true" />
+              </div>
             </div>
-            <div className="text-center space-y-2">
-              <h1 className="text-3xl font-bold tracking-tight">LightRAG</h1>
-              <p className="text-muted-foreground text-sm">
+            <div className="text-center space-y-1.5">
+              <h1 className="text-2xl font-bold tracking-tight gradient-text">{SiteInfo.name}</h1>
+              <p className="text-muted-foreground text-sm max-w-[280px]">
                 {t('login.description')}
               </p>
             </div>
           </div>
         </CardHeader>
         <CardContent className="px-8 pb-8">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="flex items-center gap-4">
-              <label htmlFor="username-input" className="text-sm font-medium w-16 shrink-0">
-                {t('login.username')}
-              </label>
-              <Input
-                id="username-input"
-                placeholder={t('login.usernamePlaceholder')}
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                required
-                className="h-11 flex-1"
-              />
-            </div>
-            <div className="flex items-center gap-4">
-              <label htmlFor="password-input" className="text-sm font-medium w-16 shrink-0">
-                {t('login.password')}
-              </label>
-              <Input
-                id="password-input"
-                type="password"
-                placeholder={t('login.passwordPlaceholder')}
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-                className="h-11 flex-1"
-              />
+          <form onSubmit={handleSubmit} className="space-y-5">
+            <div className="space-y-4">
+              <div className="group">
+                <label htmlFor="username-input" className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1.5 ml-1">
+                  {t('login.username')}
+                </label>
+                <div className="relative">
+                  <ShieldCheckIcon className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground/50 transition-colors group-focus-within:text-primary/70" />
+                  <Input
+                    id="username-input"
+                    placeholder={t('login.usernamePlaceholder')}
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    required
+                    className="h-11 pl-10 bg-muted/30 border-muted-foreground/20 focus:border-primary/50 focus:ring-primary/20 transition-all focus-ring-glow"
+                  />
+                </div>
+              </div>
+              <div className="group">
+                <label htmlFor="password-input" className="block text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1.5 ml-1">
+                  {t('login.password')}
+                </label>
+                <div className="relative">
+                  <div className="absolute left-3 top-1/2 -translate-y-1/2 size-4 flex items-center justify-center">
+                    <div className="w-3 h-3 border-2 border-muted-foreground/30 rounded-sm transition-colors group-focus-within:border-primary/50" />
+                  </div>
+                  <Input
+                    id="password-input"
+                    type="password"
+                    placeholder={t('login.passwordPlaceholder')}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                    className="h-11 pl-10 bg-muted/30 border-muted-foreground/20 focus:border-primary/50 focus:ring-primary/20 transition-all focus-ring-glow"
+                  />
+                </div>
+              </div>
             </div>
             <Button
               type="submit"
-              className="w-full h-11 text-base font-medium mt-2"
+              className="w-full h-11 text-base font-semibold mt-2 btn-gradient text-white"
               disabled={loading}
             >
-              {loading ? t('login.loggingIn') : t('login.loginButton')}
+              {loading ? (
+                <span className="flex items-center gap-2">
+                  <span className="spinner-ring size-4" />
+                  {t('login.loggingIn')}
+                </span>
+              ) : (
+                <span className="flex items-center gap-2">
+                  {t('login.loginButton')}
+                  <ArrowRightIcon className="size-4 transition-transform group-hover:translate-x-1" />
+                </span>
+              )}
             </Button>
           </form>
         </CardContent>

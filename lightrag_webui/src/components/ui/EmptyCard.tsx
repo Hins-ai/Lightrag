@@ -25,12 +25,16 @@ export default function EmptyCard({
       )}
       {...props}
     >
-      <div className="mr-4 shrink-0 rounded-full border border-dashed p-4">
-        <Icon className="text-muted-foreground size-8" aria-hidden="true" />
+      <div className="relative">
+        {/* Glow behind icon */}
+        <div className="absolute inset-0 bg-primary/10 blur-xl rounded-full scale-150" />
+        <div className="relative mr-4 shrink-0 rounded-2xl border border-dashed border-primary/30 bg-primary/5 p-5">
+          <Icon className="text-primary/60 size-10" aria-hidden="true" />
+        </div>
       </div>
-      <div className="flex flex-col items-center gap-1.5 text-center">
-        <CardTitle>{title}</CardTitle>
-        {description ? <CardDescription>{description}</CardDescription> : null}
+      <div className="flex flex-col items-center gap-2 text-center">
+        <CardTitle className="text-lg">{title}</CardTitle>
+        {description ? <CardDescription className="max-w-[280px]">{description}</CardDescription> : null}
       </div>
       {action ? action : null}
     </Card>

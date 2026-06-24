@@ -1012,6 +1012,13 @@ export const loginToServer = async (username: string, password: string): Promise
   return response.data;
 }
 
+export const changePassword = async (currentPassword: string, newPassword: string): Promise<void> => {
+  await axiosInstance.post('/change-password', {
+    current_password: currentPassword,
+    new_password: newPassword,
+  });
+}
+
 /**
  * Updates an entity's properties in the knowledge graph
  * @param entityName The name of the entity to update

@@ -72,9 +72,12 @@ export default function QuerySettings() {
   }, [handleChange, defaultValues])
 
   return (
-    <Card className="flex shrink-0 flex-col w-[280px]">
+    <Card className="flex shrink-0 flex-col w-[280px] border-border/50 shadow-sm hover:shadow-md transition-shadow duration-300">
       <CardHeader className="px-4 pt-4 pb-2">
-        <CardTitle>{t('retrievePanel.querySettings.parametersTitle')}</CardTitle>
+        <CardTitle className="text-sm font-semibold flex items-center gap-2">
+          <div className="w-1 h-4 rounded-full bg-gradient-to-b from-primary to-accent" />
+          {t('retrievePanel.querySettings.parametersTitle')}
+        </CardTitle>
         <CardDescription className="sr-only">{t('retrievePanel.querySettings.parametersDescription')}</CardDescription>
       </CardHeader>
       <CardContent className="m-0 flex grow flex-col p-0 text-xs">

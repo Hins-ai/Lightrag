@@ -1,150 +1,108 @@
+import { useState } from 'react'
 import Button from '@/components/ui/Button'
-import { SiteInfo, webuiPrefix } from '@/lib/constants'
 import AppSettings from '@/components/AppSettings'
-import { TabsList, TabsTrigger } from '@/components/ui/Tabs'
-import { useSettingsStore } from '@/stores/settings'
 import { useAuthStore } from '@/stores/state'
-import { cn } from '@/lib/utils'
 import { useTranslation } from 'react-i18next'
 import { navigationService } from '@/services/navigation'
-import { ZapIcon, LogOutIcon } from 'lucide-react'
+import { LogOutIcon } from 'lucide-react'
 import GithubIcon from '@/components/icons/GithubIcon'
+import { SiteInfo } from '@/lib/constants'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/Tooltip'
-
-interface NavigationTabProps {
-  value: string
-  currentTab: string
-  children: React.ReactNode
-}
-
-function NavigationTab({ value, currentTab, children }: NavigationTabProps) {
-  return (
-    <TabsTrigger
-      value={value}
-      className={cn(
-        'cursor-pointer px-2 py-1 transition-all',
-        currentTab === value ? '!bg-emerald-400 !text-zinc-50' : 'hover:bg-background/60'
-      )}
-    >
-      {children}
-    </TabsTrigger>
-  )
-}
-
-function TabsNavigation() {
-  const currentTab = useSettingsStore.use.currentTab()
-  const { t } = useTranslation()
-
-  return (
-    <div className="flex h-8 self-center">
-      <TabsList className="h-full gap-2">
-        <NavigationTab value="documents" currentTab={currentTab}>
-          {t('header.documents')}
-        </NavigationTab>
-        <NavigationTab value="knowledge-graph" currentTab={currentTab}>
-          {t('header.knowledgeGraph')}
-        </NavigationTab>
-        <NavigationTab value="retrieval" currentTab={currentTab}>
-          {t('header.retrieval')}
-        </NavigationTab>
-        <NavigationTab value="api" currentTab={currentTab}>
-          {t('header.api')}
-        </NavigationTab>
-      </TabsList>
-    </div>
-  )
-}
+import AccountModal from '@/components/AccountModal'
 
 export default function SiteHeader() {
   const { t } = useTranslation()
   const { isGuestMode, coreVersion, apiVersion, username, webuiTitle, webuiDescription } = useAuthStore()
+  const [accountModalOpen, setAccountModalOpen] = useState(false)
 
   const versionDisplay = (coreVersion && apiVersion)
     ? `${coreVersion}/${apiVersion}`
-    : null;
+    : null
 
-  // Check if frontend needs rebuild (apiVersion ends with warning symbol)
-  const hasWarning = apiVersion?.endsWith('⚠️');
+  const hasWarning = apiVersion?.endsWith('⚠️')
   const versionTooltip = hasWarning
     ? t('header.frontendNeedsRebuild')
-    : versionDisplay ? `v${versionDisplay}` : '';
+    : versionDisplay ? `v${versionDisplay}` : ''
 
   const handleLogout = () => {
-    navigationService.navigateToLogin();
+    navigationService.navigateToLogin()
   }
 
   return (
-    <header className="border-border/40 bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 flex h-10 w-full border-b px-4 backdrop-blur">
-      <div className="min-w-[200px] w-auto flex items-center">
-        <a href={webuiPrefix} className="flex items-center gap-2">
-          <ZapIcon className="size-4 text-emerald-400" aria-hidden="true" />
-          <span className="font-bold md:inline-block">{SiteInfo.name}</span>
-        </a>
-        {webuiTitle && (
-          <div className="flex items-center">
-            <span className="mx-1 text-xs text-gray-500 dark:text-gray-400">|</span>
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <span className="font-medium text-sm cursor-default">
-                    {webuiTitle}
-                  </span>
-                </TooltipTrigger>
-                {webuiDescription && (
-                  <TooltipContent side="bottom">
-                    {webuiDescription}
-                  </TooltipContent>
-                )}
-              </Tooltip>
-            </TooltipProvider>
-          </div>
+    <header className="glass-strong sticky top-0 z-50 flex h-11 w-full items-center border-b px-4 shadow-sm">
+      <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+
+      {/* Title / description */}
+      <div className="flex flex-1 items-center gap-2 min-w-0">
+        {webuiTitle ? (
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <span className="text-sm font-medium text-muted-foreground truncate cursor-default">
+                  {webuiTitle}
+                </span>
+              </TooltipTrigger>
+              {webuiDescription && (
+                <TooltipContent side="bottom">{webuiDescription}</TooltipContent>
+              )}
+            </Tooltip>
+          </TooltipProvider>
+        ) : (
+          <span className="text-sm text-muted-foreground/50 truncate">{SiteInfo.name}</span>
         )}
       </div>
 
-      <div className="flex h-10 flex-1 items-center justify-center">
-        <TabsNavigation />
-        {isGuestMode && (
-          <div className="ml-2 self-center px-2 py-1 text-xs bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200 rounded-md">
-            {t('login.guestMode', 'Guest Mode')}
-          </div>
+      {/* Right actions */}
+      <div className="flex items-center gap-1">
+        {versionDisplay && (
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <span className="text-[11px] font-mono text-muted-foreground/70 mr-1 cursor-default px-1.5 py-0.5 rounded-md bg-muted/30 hover:bg-muted/50 transition-colors">
+                  v{versionDisplay}
+                </span>
+              </TooltipTrigger>
+              <TooltipContent side="bottom">{versionTooltip}</TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         )}
-      </div>
-
-      <nav className="w-[200px] flex items-center justify-end">
-        <div className="flex items-center gap-2">
-          {versionDisplay && (
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <span className="text-xs text-gray-500 dark:text-gray-400 mr-1 cursor-default">
-                    v{versionDisplay}
-                  </span>
-                </TooltipTrigger>
-                <TooltipContent side="bottom">
-                  {versionTooltip}
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-          )}
-          <Button variant="ghost" size="icon" side="bottom" tooltip={t('header.projectRepository')}>
-            <a href={SiteInfo.github} target="_blank" rel="noopener noreferrer">
-              <GithubIcon className="size-4" />
-            </a>
+        <Button variant="ghost" size="icon" side="bottom" tooltip={t('header.projectRepository')} className="hover-glow">
+          <a href={SiteInfo.github} target="_blank" rel="noopener noreferrer">
+            <GithubIcon className="size-4" />
+          </a>
+        </Button>
+        <AppSettings />
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <button
+                onClick={() => setAccountModalOpen(true)}
+                className="flex items-center justify-center size-7 rounded-full bg-primary/15 hover:bg-primary/25 transition-colors text-primary font-semibold text-xs shrink-0"
+                aria-label={t('header.account', 'Account')}
+              >
+                {username ? username.charAt(0).toUpperCase() : '?'}
+              </button>
+            </TooltipTrigger>
+            <TooltipContent side="bottom">
+              {username || t('header.account', 'Account')}
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+        {!isGuestMode && (
+          <Button
+            variant="ghost"
+            size="icon"
+            side="bottom"
+            tooltip={`${t('header.logout')} (${username})`}
+            onClick={handleLogout}
+            className="hover-glow hover:text-destructive"
+          >
+            <LogOutIcon className="size-4" aria-hidden="true" />
           </Button>
-          <AppSettings />
-          {!isGuestMode && (
-            <Button
-              variant="ghost"
-              size="icon"
-              side="bottom"
-              tooltip={`${t('header.logout')} (${username})`}
-              onClick={handleLogout}
-            >
-              <LogOutIcon className="size-4" aria-hidden="true" />
-            </Button>
-          )}
-        </div>
-      </nav>
+        )}
+      </div>
+
+      <AccountModal open={accountModalOpen} onOpenChange={setAccountModalOpen} />
     </header>
   )
 }

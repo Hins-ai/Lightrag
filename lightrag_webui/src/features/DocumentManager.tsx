@@ -502,42 +502,43 @@ export default function DocumentManager() {
   type DocStatusWithStatus = DocStatusResponse & { status: DocStatus };
 
   const getStatusDisplay = useCallback((status: DocStatus): StatusDisplayConfig => {
+    const base = 'inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-medium ring-1 ring-inset'
     switch (status) {
       case 'processed':
         return {
           labelKey: 'documentPanel.documentManager.status.completed',
-          className: 'text-green-600'
+          className: `${base} bg-green-50 text-green-700 ring-green-600/20 dark:bg-green-900/20 dark:text-green-400 dark:ring-green-500/30`
         }
       case 'preprocessed':
         return {
           labelKey: 'documentPanel.documentManager.status.preprocessed',
-          className: 'text-purple-600'
+          className: `${base} bg-purple-50 text-purple-700 ring-purple-600/20 dark:bg-purple-900/20 dark:text-purple-400 dark:ring-purple-500/30`
         }
       case 'parsing':
         return {
           labelKey: 'documentPanel.documentManager.status.parsing',
-          className: 'text-cyan-600'
+          className: `${base} bg-cyan-50 text-cyan-700 ring-cyan-600/20 dark:bg-cyan-900/20 dark:text-cyan-400 dark:ring-cyan-500/30`
         }
       case 'analyzing':
         return {
           labelKey: 'documentPanel.documentManager.status.analyzing',
-          className: 'text-indigo-600'
+          className: `${base} bg-indigo-50 text-indigo-700 ring-indigo-600/20 dark:bg-indigo-900/20 dark:text-indigo-400 dark:ring-indigo-500/30`
         }
       case 'processing':
         return {
           labelKey: 'documentPanel.documentManager.status.processing',
-          className: 'text-blue-600'
+          className: `${base} bg-blue-50 text-blue-700 ring-blue-600/20 dark:bg-blue-900/20 dark:text-blue-400 dark:ring-blue-500/30`
         }
       case 'pending':
         return {
           labelKey: 'documentPanel.documentManager.status.pending',
-          className: 'text-yellow-600'
+          className: `${base} bg-yellow-50 text-yellow-700 ring-yellow-600/20 dark:bg-yellow-900/20 dark:text-yellow-400 dark:ring-yellow-500/30`
         }
       case 'failed':
       default:
         return {
           labelKey: 'documentPanel.documentManager.status.failed',
-          className: 'text-red-600'
+          className: `${base} bg-red-50 text-red-700 ring-red-600/20 dark:bg-red-900/20 dark:text-red-400 dark:ring-red-500/30`
         }
     }
   }, [])
@@ -1329,9 +1330,12 @@ export default function DocumentManager() {
   ]);
 
   return (
-    <Card className="!rounded-none !overflow-hidden flex flex-col h-full min-h-0">
-      <CardHeader className="py-2 px-6">
-        <CardTitle className="text-lg">{t('documentPanel.documentManager.title')}</CardTitle>
+    <Card className="!rounded-none !overflow-hidden flex flex-col h-full min-h-0 border-0 shadow-none">
+      <CardHeader className="py-3 px-6 border-b border-border/40">
+        <CardTitle className="text-lg font-semibold flex items-center gap-2">
+          <div className="w-1 h-5 rounded-full bg-gradient-to-b from-primary to-accent" />
+          {t('documentPanel.documentManager.title')}
+        </CardTitle>
       </CardHeader>
       <CardContent className="flex-1 flex flex-col min-h-0 overflow-auto">
         <div className="flex justify-between items-center gap-2 mb-2">
@@ -1411,115 +1415,84 @@ export default function DocumentManager() {
           </div>
         </div>
 
-        <Card className="flex-1 flex flex-col border rounded-md min-h-0 mb-2">
-          <CardHeader className="flex-none py-2 px-4">
-            <div className="flex justify-between items-center">
-              <CardTitle>{t('documentPanel.documentManager.uploadedTitle')}</CardTitle>
-              <div className="flex items-center gap-2">
-                <div className="flex gap-1" dir={i18n.dir()}>
-                  <Button
-                    size="sm"
-                    variant={statusFilter === 'all' ? 'secondary' : 'outline'}
-                    onClick={() => handleStatusFilterChange('all')}
-                    disabled={isRefreshing}
+        <Card className="flex-1 flex flex-col border rounded-xl min-h-0 mb-2 shadow-sm">
+          <CardHeader className="flex-none py-2.5 px-4 gap-1.5 border-b border-border/40">
+            {/* Row 1: title + right actions */}
+            <div className="flex items-center justify-between">
+              <CardTitle className="text-sm font-semibold flex items-center gap-2">
+                <div className="w-1 h-4 rounded-full bg-gradient-to-b from-primary to-accent" />
+                {t('documentPanel.documentManager.uploadedTitle')}
+              </CardTitle>
+              <div className="flex items-center gap-1.5">
+                <span className="text-xs text-muted-foreground">
+                  {t('documentPanel.documentManager.fileNameLabel')}
+                </span>
+                <button
+                  id="toggle-filename-btn"
+                  type="button"
+                  onClick={() => setShowFileName(!showFileName)}
+                  className={cn(
+                    'relative inline-flex h-5 w-9 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors duration-200',
+                    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+                    showFileName ? 'bg-primary' : 'bg-muted-foreground/30'
+                  )}
+                  role="switch"
+                  aria-checked={showFileName}
+                >
+                  <span
                     className={cn(
-                      statusFilter === 'all' && 'bg-gray-100 dark:bg-gray-900 font-medium border border-gray-400 dark:border-gray-500 shadow-sm'
+                      'pointer-events-none block h-4 w-4 rounded-full bg-white shadow-lg ring-0 transition-transform duration-200',
+                      showFileName ? 'translate-x-4' : 'translate-x-0'
                     )}
-                  >
-                    {t('documentPanel.documentManager.filters.all')} ({statusCounts.all || documentCounts.all})
-                  </Button>
-                  <Button
-                    size="sm"
-                    variant={statusFilter === 'processed' ? 'secondary' : 'outline'}
-                    onClick={() => handleStatusFilterChange('processed')}
-                    disabled={isRefreshing}
-                    className={cn(
-                      processedCount > 0 ? 'text-green-600' : 'text-gray-500',
-                      statusFilter === 'processed' && 'bg-green-100 dark:bg-green-900/30 font-medium border border-green-400 dark:border-green-600 shadow-sm'
-                    )}
-                  >
-                    {t('documentPanel.documentManager.filters.completed')} ({processedCount})
-                  </Button>
-                  <Button
-                    size="sm"
-                    variant={statusFilter === 'analyzing' ? 'secondary' : 'outline'}
-                    onClick={() => handleStatusFilterChange('analyzing')}
-                    disabled={isRefreshing}
-                    className={cn(
-                      analyzingCount > 0 ? 'text-indigo-600' : 'text-gray-500',
-                      statusFilter === 'analyzing' && 'bg-indigo-100 dark:bg-indigo-900/30 font-medium border border-indigo-400 dark:border-indigo-600 shadow-sm'
-                    )}
-                  >
-                    {t('documentPanel.documentManager.filters.analyzing')} ({analyzingCount})
-                  </Button>
-                  <Button
-                    size="sm"
-                    variant={statusFilter === 'processing' ? 'secondary' : 'outline'}
-                    onClick={() => handleStatusFilterChange('processing')}
-                    disabled={isRefreshing}
-                    className={cn(
-                      processingCount > 0 ? 'text-blue-600' : 'text-gray-500',
-                      statusFilter === 'processing' && 'bg-blue-100 dark:bg-blue-900/30 font-medium border border-blue-400 dark:border-blue-600 shadow-sm'
-                    )}
-                  >
-                    {t('documentPanel.documentManager.filters.processing')} ({processingCount})
-                  </Button>
-                  <Button
-                    size="sm"
-                    variant={statusFilter === 'pending' ? 'secondary' : 'outline'}
-                    onClick={() => handleStatusFilterChange('pending')}
-                    disabled={isRefreshing}
-                    className={cn(
-                      pendingCount > 0 ? 'text-yellow-600' : 'text-gray-500',
-                      statusFilter === 'pending' && 'bg-yellow-100 dark:bg-yellow-900/30 font-medium border border-yellow-400 dark:border-yellow-600 shadow-sm'
-                    )}
-                  >
-                    {t('documentPanel.documentManager.filters.pending')} ({pendingCount})
-                  </Button>
-                  <Button
-                    size="sm"
-                    variant={statusFilter === 'failed' ? 'secondary' : 'outline'}
-                    onClick={() => handleStatusFilterChange('failed')}
-                    disabled={isRefreshing}
-                    className={cn(
-                      failedCount > 0 ? 'text-red-600' : 'text-gray-500',
-                      statusFilter === 'failed' && 'bg-red-100 dark:bg-red-900/30 font-medium border border-red-400 dark:border-red-600 shadow-sm'
-                    )}
-                  >
-                    {t('documentPanel.documentManager.filters.failed')} ({failedCount})
-                  </Button>
-                </div>
+                  />
+                </button>
                 <Button
                   variant="ghost"
-                  size="sm"
+                  size="icon"
                   onClick={handleManualRefresh}
                   disabled={isRefreshing}
                   side="bottom"
                   tooltip={t('documentPanel.documentManager.refreshTooltip')}
+                  className="h-7 w-7"
                 >
-                  <RotateCcwIcon className="h-4 w-4" />
+                  <RotateCcwIcon className="h-3.5 w-3.5" />
                 </Button>
               </div>
-              <div className="flex items-center gap-2">
-                <label
-                  htmlFor="toggle-filename-btn"
-                  className="text-sm text-gray-500"
-                >
-                  {t('documentPanel.documentManager.fileNameLabel')}
-                </label>
-                <Button
-                  id="toggle-filename-btn"
-                  variant="outline"
-                  size="sm"
-                  onClick={() => setShowFileName(!showFileName)}
-                  className="border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800"
-                >
-                  {showFileName
-                    ? t('documentPanel.documentManager.hideButton')
-                    : t('documentPanel.documentManager.showButton')
-                  }
-                </Button>
-              </div>
+            </div>
+            {/* Row 2: status filter pills */}
+            <div className="flex items-center gap-1.5 flex-wrap" dir={i18n.dir()}>
+              {([
+                { key: 'all', label: t('documentPanel.documentManager.filters.all'), count: statusCounts.all || documentCounts.all, activeClass: 'bg-foreground text-background border-foreground/80 shadow-sm', inactiveCount: '' },
+                { key: 'processed', label: t('documentPanel.documentManager.filters.completed'), count: processedCount, activeClass: 'bg-green-500 text-white border-green-500 shadow-sm', inactiveCount: processedCount > 0 ? 'text-green-600 dark:text-green-400' : '' },
+                { key: 'analyzing', label: t('documentPanel.documentManager.filters.analyzing'), count: analyzingCount, activeClass: 'bg-indigo-500 text-white border-indigo-500 shadow-sm', inactiveCount: analyzingCount > 0 ? 'text-indigo-600 dark:text-indigo-400' : '' },
+                { key: 'processing', label: t('documentPanel.documentManager.filters.processing'), count: processingCount, activeClass: 'bg-blue-500 text-white border-blue-500 shadow-sm', inactiveCount: processingCount > 0 ? 'text-blue-600 dark:text-blue-400' : '' },
+                { key: 'pending', label: t('documentPanel.documentManager.filters.pending'), count: pendingCount, activeClass: 'bg-yellow-500 text-white border-yellow-500 shadow-sm', inactiveCount: pendingCount > 0 ? 'text-yellow-600 dark:text-yellow-400' : '' },
+                { key: 'failed', label: t('documentPanel.documentManager.filters.failed'), count: failedCount, activeClass: 'bg-red-500 text-white border-red-500 shadow-sm', inactiveCount: failedCount > 0 ? 'text-red-600 dark:text-red-400' : '' },
+              ] as const).map(({ key, label, count, activeClass, inactiveCount }) => {
+                const isActive = statusFilter === key
+                return (
+                  <button
+                    key={key}
+                    type="button"
+                    onClick={() => handleStatusFilterChange(key as StatusFilter)}
+                    disabled={isRefreshing}
+                    className={cn(
+                      'inline-flex items-center gap-1.5 rounded-full border px-2.5 py-0.5 text-xs font-medium transition-all duration-200 disabled:opacity-50',
+                      isActive
+                        ? activeClass
+                        : cn('border-border bg-transparent text-muted-foreground hover:border-muted-foreground/50 hover:text-foreground', inactiveCount)
+                    )}
+                  >
+                    {label}
+                    <span className={cn(
+                      'inline-flex min-w-[16px] items-center justify-center rounded-full px-1 text-[10px] font-bold leading-4',
+                      isActive ? 'bg-white/25 text-current' : 'bg-muted text-muted-foreground'
+                    )}>
+                      {count}
+                    </span>
+                  </button>
+                )
+              })}
             </div>
             <CardDescription aria-hidden="true" className="hidden">{t('documentPanel.documentManager.uploadedDescription')}</CardDescription>
           </CardHeader>
@@ -1535,14 +1508,14 @@ export default function DocumentManager() {
             )}
             {docs && (
               <div className="absolute inset-0 flex min-h-0 flex-col p-0">
-                <div className="absolute inset-[-1px] flex flex-col p-0 border rounded-md border-gray-200 dark:border-gray-700 overflow-hidden">
+                <div className="absolute inset-[-1px] flex flex-col p-0 border rounded-xl border-border/50 overflow-hidden">
                   <TooltipProvider>
                     <Table className="w-full">
                       <TableHeader className="sticky top-0 bg-background z-10 shadow-sm">
                         <TableRow className="border-b bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/75 shadow-[inset_0_-1px_0_rgba(0,0,0,0.1)]">
                           <TableHead
                             onClick={() => handleSort('id')}
-                            className="cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-800 select-none"
+                            className="cursor-pointer hover:bg-muted/60 select-none transition-colors"
                           >
                             <div className="flex items-center">
                               {showFileName
@@ -1562,7 +1535,7 @@ export default function DocumentManager() {
                           <TableHead>{t('documentPanel.documentManager.columns.chunks')}</TableHead>
                           <TableHead
                             onClick={() => handleSort('created_at')}
-                            className="cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-800 select-none"
+                            className="cursor-pointer hover:bg-muted/60 select-none transition-colors"
                           >
                             <div className="flex items-center">
                               {t('documentPanel.documentManager.columns.created')}
@@ -1575,7 +1548,7 @@ export default function DocumentManager() {
                           </TableHead>
                           <TableHead
                             onClick={() => handleSort('updated_at')}
-                            className="cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-800 select-none"
+                            className="cursor-pointer hover:bg-muted/60 select-none transition-colors"
                           >
                             <div className="flex items-center">
                               {t('documentPanel.documentManager.columns.updated')}

@@ -9,12 +9,14 @@ import { useSettingsStore } from '@/stores/settings'
 import { getAuthStatus } from '@/api/lightrag'
 import SiteHeader from '@/features/SiteHeader'
 import { InvalidApiKeyError, RequireApiKeError } from '@/api/lightrag'
-import { ZapIcon } from 'lucide-react'
+import { Sparkles } from 'lucide-react'
+import BusIcon from '@/components/icons/BusIcon'
 
 import GraphViewer from '@/features/GraphViewer'
 import DocumentManager from '@/features/DocumentManager'
 import RetrievalTesting from '@/features/RetrievalTesting'
 import ApiSite from '@/features/ApiSite'
+import SiteSidebar from '@/features/SiteSidebar'
 
 import { Tabs, TabsContent } from '@/components/ui/Tabs'
 
@@ -169,13 +171,13 @@ function App() {
       <TabVisibilityProvider>
         {initializing ? (
           // Loading state while initializing with simplified header
-          <div className="flex h-screen w-screen flex-col">
+          <div className="flex h-screen w-screen flex-col bg-gradient-to-br from-background to-muted/30">
             {/* Simplified header during initialization - matches SiteHeader structure */}
-            <header className="border-border/40 bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 flex h-10 w-full border-b px-4 backdrop-blur">
+            <header className="glass-strong sticky top-0 z-50 flex h-11 w-full border-b px-4">
               <div className="min-w-[200px] w-auto flex items-center">
                 <a href={webuiPrefix} className="flex items-center gap-2">
-                  <ZapIcon className="size-4 text-emerald-400" aria-hidden="true" />
-                  <span className="font-bold md:inline-block">{SiteInfo.name}</span>
+                  <BusIcon className="h-4 w-6" aria-hidden="true" />
+                  <span className="font-bold md:inline-block gradient-text">{SiteInfo.name}</span>
                 </a>
               </div>
 
@@ -190,9 +192,22 @@ function App() {
 
             {/* Loading indicator in content area */}
             <div className="flex flex-1 items-center justify-center">
-              <div className="text-center">
-                <div className="mb-2 h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent mx-auto"></div>
-                <p>Initializing...</p>
+              <div className="text-center space-y-4 animate-fade-in">
+                <div className="relative mx-auto">
+                  <div className="absolute inset-0 bg-primary/20 blur-2xl rounded-full scale-150 animate-pulse" />
+                  <div className="relative flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-accent shadow-lg shadow-primary/30">
+                    <Sparkles className="size-6 text-white animate-pulse" />
+                  </div>
+                </div>
+                <div className="space-y-1">
+                  <p className="text-sm font-medium text-foreground">Initializing</p>
+                  <p className="text-xs text-muted-foreground">Preparing your workspace...</p>
+                </div>
+                <div className="flex justify-center gap-1">
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary/60 typing-dot" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary/60 typing-dot" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-primary/60 typing-dot" />
+                </div>
               </div>
             </div>
           </div>
@@ -201,23 +216,26 @@ function App() {
           <main className="flex h-screen w-screen overflow-hidden">
             <Tabs
               defaultValue={currentTab}
-              className="!m-0 flex grow flex-col !p-0 overflow-hidden"
+              className="!m-0 flex grow !p-0 overflow-hidden"
               onValueChange={handleTabChange}
             >
-              <SiteHeader />
-              <div className="relative grow">
-                <TabsContent value="documents" className="absolute top-0 right-0 bottom-0 left-0 overflow-auto">
-                  <DocumentManager />
-                </TabsContent>
-                <TabsContent value="knowledge-graph" className="absolute top-0 right-0 bottom-0 left-0 overflow-hidden">
-                  <GraphViewer />
-                </TabsContent>
-                <TabsContent value="retrieval" className="absolute top-0 right-0 bottom-0 left-0 overflow-hidden">
-                  <RetrievalTesting />
-                </TabsContent>
-                <TabsContent value="api" className="absolute top-0 right-0 bottom-0 left-0 overflow-hidden">
-                  <ApiSite />
-                </TabsContent>
+              <SiteSidebar />
+              <div className="flex flex-col flex-1 overflow-hidden">
+                <SiteHeader />
+                <div className="relative grow">
+                  <TabsContent value="documents" className="absolute top-0 right-0 bottom-0 left-0 overflow-auto">
+                    <DocumentManager />
+                  </TabsContent>
+                  <TabsContent value="knowledge-graph" className="absolute top-0 right-0 bottom-0 left-0 overflow-hidden">
+                    <GraphViewer />
+                  </TabsContent>
+                  <TabsContent value="retrieval" className="absolute top-0 right-0 bottom-0 left-0 overflow-hidden">
+                    <RetrievalTesting />
+                  </TabsContent>
+                  <TabsContent value="api" className="absolute top-0 right-0 bottom-0 left-0 overflow-hidden">
+                    <ApiSite />
+                  </TabsContent>
+                </div>
               </div>
             </Tabs>
             {enableHealthCheck && <StatusIndicator />}

@@ -1,0 +1,754 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"><key id="d13" for="edge" attr.name="truncate" attr.type="string"/>
+<key id="d12" for="edge" attr.name="created_at" attr.type="long"/>
+<key id="d11" for="edge" attr.name="file_path" attr.type="string"/>
+<key id="d10" for="edge" attr.name="source_id" attr.type="string"/>
+<key id="d9" for="edge" attr.name="keywords" attr.type="string"/>
+<key id="d8" for="edge" attr.name="description" attr.type="string"/>
+<key id="d7" for="edge" attr.name="weight" attr.type="double"/>
+<key id="d6" for="node" attr.name="truncate" attr.type="string"/>
+<key id="d5" for="node" attr.name="created_at" attr.type="long"/>
+<key id="d4" for="node" attr.name="file_path" attr.type="string"/>
+<key id="d3" for="node" attr.name="source_id" attr.type="string"/>
+<key id="d2" for="node" attr.name="description" attr.type="string"/>
+<key id="d1" for="node" attr.name="entity_type" attr.type="string"/>
+<key id="d0" for="node" attr.name="entity_id" attr.type="string"/>
+<graph edgedefault="undirected"><node id="Online Bus Customer Service Management and Merchant Training Manual V20250811">
+  <data key="d0">Online Bus Customer Service Management and Merchant Training Manual V20250811</data>
+  <data key="d1">content</data>
+  <data key="d2">A manual providing instructions on using the Honghu backend for customer service management and merchant training.</data>
+  <data key="d3">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-000</data>
+  <data key="d4">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d5">1779777461</data>
+  <data key="d6"></data>
+</node>
+<node id="Honghu Backend">
+  <data key="d0">Honghu Backend</data>
+  <data key="d1">artifact</data>
+  <data key="d2">A software management platform used by bus groups for handling customer service issues including generating virtual numbers, processing refunds, and order closures.</data>
+  <data key="d3">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-000</data>
+  <data key="d4">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d5">1779777461</data>
+  <data key="d6"></data>
+</node>
+<node id="Bus Group">
+  <data key="d0">Bus Group</data>
+  <data key="d1">organization</data>
+  <data key="d2">The public transportation company responsible for customer service issues, who uses the Honghu Backend.</data>
+  <data key="d3">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-000</data>
+  <data key="d4">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d5">1779777461</data>
+  <data key="d6"></data>
+</node>
+<node id="Didi">
+  <data key="d0">Didi</data>
+  <data key="d1">organization</data>
+  <data key="d2">The technology company that provides the Honghu Backend platform and supports the bus group's customer service operations.</data>
+  <data key="d3">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-000</data>
+  <data key="d4">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d5">1779777461</data>
+  <data key="d6"></data>
+</node>
+<node id="Virtual Number">
+  <data key="d0">Virtual Number</data>
+  <data key="d1">method</data>
+  <data key="d2">A feature that generates a temporary virtual phone number to allow customer service to contact passengers without revealing real numbers.</data>
+  <data key="d3">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-000</data>
+  <data key="d4">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d5">1779777461</data>
+  <data key="d6"></data>
+</node>
+<node id="Refund">
+  <data key="d0">Refund</data>
+  <data key="d1">method</data>
+  <data key="d2">A feature allowing refunds for online and offline orders, supporting full or partial refunds.&lt;SEP&gt;Refund is the operation to return payment to a passenger for an order, applicable to both online and offline orders, with details displayed after processing.</data>
+  <data key="d3">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-000&lt;SEP&gt;doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-001</data>
+  <data key="d4">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d5">1779777461</data>
+  <data key="d6"></data>
+</node>
+<node id="Order Closure">
+  <data key="d0">Order Closure</data>
+  <data key="d1">method</data>
+  <data key="d2">A feature to close orders, either free or paid, for resolving issues.</data>
+  <data key="d3">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-000</data>
+  <data key="d4">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d5">1779777461</data>
+  <data key="d6"></data>
+</node>
+<node id="Passenger">
+  <data key="d0">Passenger</data>
+  <data key="d1">person</data>
+  <data key="d2">The user of the online bus service who may contact customer service with issues.&lt;SEP&gt;Passenger is the customer who books rides and may experience problems like duplicate charges, being charged without taking a ride, lost items, or driver service issues.</data>
+  <data key="d3">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-000&lt;SEP&gt;doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-001</data>
+  <data key="d4">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d5">1779777461</data>
+  <data key="d6"></data>
+</node>
+<node id="Customer Service">
+  <data key="d0">Customer Service</data>
+  <data key="d1">person</data>
+  <data key="d2">The staff of the bus group responsible for handling passenger complaints and using the Honghu Backend features.&lt;SEP&gt;Customer Service is the team that handles passenger inquiries and complaints, using standard scripts to comfort passengers, record issues, and provide guidance on invoice application and navigation problems.</data>
+  <data key="d3">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-000&lt;SEP&gt;doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-002</data>
+  <data key="d4">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d5">1779777462</data>
+  <data key="d6"></data>
+</node>
+<node id="Online Order">
+  <data key="d0">Online Order</data>
+  <data key="d1">concept</data>
+  <data key="d2">Orders placed through the Didi mini-program or app, with payment after trip completion.&lt;SEP&gt;Online order refers to a ride order placed and paid through the online platform, supported for cancellation and refund operations by merchant administrators.</data>
+  <data key="d3">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-000&lt;SEP&gt;doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-001</data>
+  <data key="d4">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d5">1779777462</data>
+  <data key="d6"></data>
+</node>
+<node id="Offline Order">
+  <data key="d0">Offline Order</data>
+  <data key="d1">concept</data>
+  <data key="d2">Orders where the passenger scans a code to board and pays directly.&lt;SEP&gt;Offline order refers to a ride order conducted offline, possibly involving cash payment, and can be refunded in case of duplicate charges.</data>
+  <data key="d3">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-000&lt;SEP&gt;doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-001</data>
+  <data key="d4">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d5">1779777462</data>
+  <data key="d6"></data>
+</node>
+<node id="Administrator">
+  <data key="d0">Administrator</data>
+  <data key="d1">person</data>
+  <data key="d2">Staff members designated by the bus company to have permissions for generating virtual numbers and managing passenger contact, especially for future restricted access.</data>
+  <data key="d3">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-000</data>
+  <data key="d4">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d5">1779777462</data>
+  <data key="d6"></data>
+</node>
+<node id="宏鹄管理后台">
+  <data key="d0">宏鹄管理后台</data>
+  <data key="d1">artifact</data>
+  <data key="d2">宏鹄管理后台is a management backend system used by merchant administrators to handle online and offline ride orders, including operations like refund and order cancellation.</data>
+  <data key="d3">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-001</data>
+  <data key="d4">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d5">1779777462</data>
+  <data key="d6"></data>
+</node>
+<node id="Order Cancellation">
+  <data key="d0">Order Cancellation</data>
+  <data key="d1">method</data>
+  <data key="d2">Order cancellation is the operation to close an order, available for unpaid online orders, and can be free or paid depending on the scenario.</data>
+  <data key="d3">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-001</data>
+  <data key="d4">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d5">1779777462</data>
+  <data key="d6"></data>
+</node>
+<node id="Free Order Cancellation">
+  <data key="d0">Free Order Cancellation</data>
+  <data key="d1">method</data>
+  <data key="d2">Free order cancellation closes an online order without requiring the passenger to pay, used when the order is unpaid and issues like duplicate charge or non-ride are confirmed.</data>
+  <data key="d3">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-001</data>
+  <data key="d4">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d5">1779777462</data>
+  <data key="d6"></data>
+</node>
+<node id="Paid Order Cancellation">
+  <data key="d0">Paid Order Cancellation</data>
+  <data key="d1">method</data>
+  <data key="d2">Paid order cancellation closes an order but still requires the passenger to pay, applied when the passenger has alighted but the driver has not ended the trip.</data>
+  <data key="d3">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-001</data>
+  <data key="d4">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d5">1779777462</data>
+  <data key="d6"></data>
+</node>
+<node id="Merchant Administrator">
+  <data key="d0">Merchant Administrator</data>
+  <data key="d1">person</data>
+  <data key="d2">Merchant administrator is a role that operates refund and order cancellation in the宏鹄管理后台, handling issues like duplicate charges and incorrect ride charges.</data>
+  <data key="d3">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-001</data>
+  <data key="d4">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d5">1779777462</data>
+  <data key="d6"></data>
+</node>
+<node id="Driver">
+  <data key="d0">Driver</data>
+  <data key="d1">person</data>
+  <data key="d2">Driver is the service provider who may be involved in issues such as not ending a trip, misoperation leading to charges without ride, or service complaints.</data>
+  <data key="d3">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-001</data>
+  <data key="d4">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d5">1779777462</data>
+  <data key="d6"></data>
+</node>
+<node id="Duplicate Charge">
+  <data key="d0">Duplicate Charge</data>
+  <data key="d1">concept</data>
+  <data key="d2">Duplicate charge is a situation where a passenger is charged twice for the same ride, detectable by matching online and offline orders by date, time, and driver.</data>
+  <data key="d3">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-001</data>
+  <data key="d4">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d5">1779777462</data>
+  <data key="d6"></data>
+</node>
+<node id="Charge Without Ride">
+  <data key="d0">Charge Without Ride</data>
+  <data key="d1">concept</data>
+  <data key="d2">Charge without ride occurs when a passenger is charged despite not having taken the ride, possibly due to driver error or failure to cancel correctly, resolved by refund or free cancellation.</data>
+  <data key="d3">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-001</data>
+  <data key="d4">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d5">1779777462</data>
+  <data key="d6"></data>
+</node>
+<node id="Driver Service Issue">
+  <data key="d0">Driver Service Issue</data>
+  <data key="d1">concept</data>
+  <data key="d2">Driver service issue refers to complaints about driver behavior, requiring investigation and possible penalties, with standard scripts used to appease the passenger.</data>
+  <data key="d3">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-001</data>
+  <data key="d4">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d5">1779777462</data>
+  <data key="d6"></data>
+</node>
+<node id="Early Drop-off Fare Issue">
+  <data key="d0">Early Drop-off Fare Issue</data>
+  <data key="d1">concept</data>
+  <data key="d2">Early drop-off fare issue arises when a passenger wants to alight before the destination but the fare remains unchanged due to the fixed-price model of网约公交.</data>
+  <data key="d3">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-001</data>
+  <data key="d4">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d5">1779777462</data>
+  <data key="d6"></data>
+</node>
+<node id="Lost Item">
+  <data key="d0">Lost Item</data>
+  <data key="d1">concept</data>
+  <data key="d2">Lost item is a situation where a passenger leaves belongings in a vehicle, triggering a search procedure and standard responses to reassure the passenger.&lt;SEP&gt;Lost Item is a passenger complaint type involving missing personal belongings, handled by recording details and arranging search.</data>
+  <data key="d3">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-001&lt;SEP&gt;doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-002</data>
+  <data key="d4">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d5">1779777462</data>
+  <data key="d6"></data>
+</node>
+<node id="Standard Script">
+  <data key="d0">Standard Script</data>
+  <data key="d1">content</data>
+  <data key="d2">Standard script is a predefined response template used by customer service to address common issues like service complaints and lost items.&lt;SEP&gt;Standard Script is a set of predefined comforting responses used by customer service to address passenger complaints regarding lost items, distant stops, and other issues.</data>
+  <data key="d3">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-001&lt;SEP&gt;doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-002</data>
+  <data key="d4">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d5">1779777462</data>
+  <data key="d6"></data>
+</node>
+<node id="网约公交">
+  <data key="d0">网约公交</data>
+  <data key="d1">concept</data>
+  <data key="d2">网约公交is a ride-hailing bus service with a fixed fare model, where early drop-off does not reduce the fare, and it is mentioned in the context of fare adjustment policies.&lt;SEP&gt;网约公交is an online-hailed bus service that recommends pickup stops based on passenger and driver locations, ensuring walking distance generally under 300 meters.</data>
+  <data key="d3">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-001&lt;SEP&gt;doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-002</data>
+  <data key="d4">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d5">1779777462</data>
+  <data key="d6"></data>
+</node>
+<node id="公交公司">
+  <data key="d0">公交公司</data>
+  <data key="d1">organization</data>
+  <data key="d2">公交公司is the bus operating company that makes final decisions on fare adjustments in cases of early drop-off, as mentioned in the standard script for handling early alightment issues.</data>
+  <data key="d3">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-001</data>
+  <data key="d4">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d5">1779777462</data>
+  <data key="d6"></data>
+</node>
+<node id="滴滴出行">
+  <data key="d0">滴滴出行</data>
+  <data key="d1">organization</data>
+  <data key="d2">滴滴出行is a ride-hailing platform that provides the online-hailed bus service via its app or mini-program.</data>
+  <data key="d3">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-002</data>
+  <data key="d4">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d5">1779777462</data>
+  <data key="d6"></data>
+</node>
+<node id="公交集团">
+  <data key="d0">公交集团</data>
+  <data key="d1">organization</data>
+  <data key="d2">公交集团is the bus operating company responsible for managing the online-hailed bus service and handling certain customer issues.</data>
+  <data key="d3">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-002</data>
+  <data key="d4">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d5">1779777462</data>
+  <data key="d6"></data>
+</node>
+<node id="电子税务局">
+  <data key="d0">电子税务局</data>
+  <data key="d1">organization</data>
+  <data key="d2">电子税务局is the electronic tax bureau system used for issuing invoices and requiring periodic facial recognition authentication.</data>
+  <data key="d3">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-002</data>
+  <data key="d4">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d5">1779777462</data>
+  <data key="d6"></data>
+</node>
+<node id="网约公交乘客端培训手册">
+  <data key="d0">网约公交乘客端培训手册</data>
+  <data key="d1">content</data>
+  <data key="d2">网约公交乘客端培训手册is a training manual containing a knowledge base of common passenger questions for the online-hailed bus passenger end.</data>
+  <data key="d3">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-002</data>
+  <data key="d4">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d5">1779777462</data>
+  <data key="d6"></data>
+</node>
+<node id="Stop Too Far">
+  <data key="d0">Stop Too Far</data>
+  <data key="d1">event</data>
+  <data key="d2">Stop Too Far is a passenger complaint about recommended pickup stops being too far, with a guarantee that walking distance is generally under 300 meters.</data>
+  <data key="d3">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-002</data>
+  <data key="d4">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d5">1779777462</data>
+  <data key="d6"></data>
+</node>
+<node id="Invoice Issue">
+  <data key="d0">Invoice Issue</data>
+  <data key="d1">event</data>
+  <data key="d2">Invoice Issue is a passenger inquiry or problem regarding invoice generation or abnormal invoicing errors.</data>
+  <data key="d3">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-002</data>
+  <data key="d4">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d5">1779777462</data>
+  <data key="d6"></data>
+</node>
+<node id="Navigation Unreasonable">
+  <data key="d0">Navigation Unreasonable</data>
+  <data key="d1">event</data>
+  <data key="d2">Navigation Unreasonable is a passenger complaint about unreasonable navigation, which may be resolved by partial refund if strongly disputed.</data>
+  <data key="d3">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-002</data>
+  <data key="d4">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d5">1779777462</data>
+  <data key="d6"></data>
+</node>
+<node id="Product Issues">
+  <data key="d0">Product Issues</data>
+  <data key="d1">event</data>
+  <data key="d2">Product Issues are general passenger inquiries about product-related matters, addressed using the knowledge base in the training manual.</data>
+  <data key="d3">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-002</data>
+  <data key="d4">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d5">1779777462</data>
+  <data key="d6"></data>
+</node>
+<node id="Facial Recognition Authentication">
+  <data key="d0">Facial Recognition Authentication</data>
+  <data key="d1">method</data>
+  <data key="d2">Facial Recognition Authentication is a security procedure required for login to the electronic tax bureau to resolve invoicing exceptions.</data>
+  <data key="d3">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-002</data>
+  <data key="d4">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d5">1779777462</data>
+  <data key="d6"></data>
+</node>
+<node id="Partial Refund">
+  <data key="d0">Partial Refund</data>
+  <data key="d1">method</data>
+  <data key="d2">Partial Refund is a compensation method that the bus company can apply at its discretion for navigation complaints.</data>
+  <data key="d3">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-002</data>
+  <data key="d4">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d5">1779777462</data>
+  <data key="d6"></data>
+</node>
+<edge source="Online Bus Customer Service Management and Merchant Training Manual V20250811" target="Honghu Backend">
+  <data key="d7">1.0</data>
+  <data key="d8">The manual provides instructions on the features of the Honghu Backend.</data>
+  <data key="d9">documentation,instruction</data>
+  <data key="d10">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-000</data>
+  <data key="d11">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d12">1779777463</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Online Bus Customer Service Management and Merchant Training Manual V20250811" target="Bus Group">
+  <data key="d7">1.0</data>
+  <data key="d8">The manual is designed to provide guidance to the bus group on using the Honghu backend.</data>
+  <data key="d9">intended audience</data>
+  <data key="d10">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-000</data>
+  <data key="d11">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d12">1779777465</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Honghu Backend" target="Virtual Number">
+  <data key="d7">1.0</data>
+  <data key="d8">The Honghu Backend includes a virtual number generation feature.</data>
+  <data key="d9">feature provision</data>
+  <data key="d10">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-000</data>
+  <data key="d11">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d12">1779777464</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Honghu Backend" target="Refund">
+  <data key="d7">1.0</data>
+  <data key="d8">The Honghu Backend includes a refund processing feature.</data>
+  <data key="d9">feature provision</data>
+  <data key="d10">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-000</data>
+  <data key="d11">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d12">1779777464</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Honghu Backend" target="Order Closure">
+  <data key="d7">1.0</data>
+  <data key="d8">The Honghu Backend includes an order closure feature.</data>
+  <data key="d9">feature provision</data>
+  <data key="d10">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-000</data>
+  <data key="d11">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d12">1779777464</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Honghu Backend" target="Bus Group">
+  <data key="d7">1.0</data>
+  <data key="d8">The bus group uses the Honghu Backend to handle passenger complaints.</data>
+  <data key="d9">customer service,usage</data>
+  <data key="d10">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-000</data>
+  <data key="d11">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d12">1779777465</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Honghu Backend" target="Didi">
+  <data key="d7">1.0</data>
+  <data key="d8">Didi provides the Honghu Backend platform to the bus group.</data>
+  <data key="d9">platform provision</data>
+  <data key="d10">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-000</data>
+  <data key="d11">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d12">1779777465</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Bus Group" target="Customer Service">
+  <data key="d7">1.0</data>
+  <data key="d8">The bus group's customer service department handles passenger issues.</data>
+  <data key="d9">employment</data>
+  <data key="d10">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-000</data>
+  <data key="d11">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d12">1779777465</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Bus Group" target="Didi">
+  <data key="d7">1.0</data>
+  <data key="d8">Didi provides support to the bus group for handling customer service operations.</data>
+  <data key="d9">support</data>
+  <data key="d10">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-000</data>
+  <data key="d11">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d12">1779777465</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Bus Group" target="Administrator">
+  <data key="d7">1.0</data>
+  <data key="d8">The bus group must designate 2-3 administrators responsible for contacting passengers via virtual numbers.</data>
+  <data key="d9">designation,responsibility</data>
+  <data key="d10">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-000</data>
+  <data key="d11">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d12">1779777466</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Didi" target="Administrator">
+  <data key="d7">1.0</data>
+  <data key="d8">Didi requires that virtual number generation permission be restricted to designated administrators to protect passenger privacy.</data>
+  <data key="d9">permission restriction,privacy policy</data>
+  <data key="d10">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-000</data>
+  <data key="d11">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d12">1779777467</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Virtual Number" target="Customer Service">
+  <data key="d7">1.0</data>
+  <data key="d8">Customer service uses the virtual number feature to call passengers.</data>
+  <data key="d9">utilization</data>
+  <data key="d10">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-000</data>
+  <data key="d11">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d12">1779777463</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Virtual Number" target="Administrator">
+  <data key="d7">1.0</data>
+  <data key="d8">Administrators are granted the ability to generate virtual numbers, which they use to contact passengers.</data>
+  <data key="d9">permission,usage</data>
+  <data key="d10">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-000</data>
+  <data key="d11">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d12">1779777467</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Refund" target="Online Order">
+  <data key="d7">2.0</data>
+  <data key="d8">Refunds can be processed for online orders.&lt;SEP&gt;Refund can be applied to online orders to return payments to passengers.</data>
+  <data key="d9">applicable to,application,resolution</data>
+  <data key="d10">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-000&lt;SEP&gt;doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-001</data>
+  <data key="d11">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d12">1779777463</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Refund" target="Offline Order">
+  <data key="d7">2.0</data>
+  <data key="d8">Refunds can be processed for offline orders.&lt;SEP&gt;Refund can be applied to offline orders to return payments to passengers.</data>
+  <data key="d9">applicable to,application,resolution</data>
+  <data key="d10">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-000&lt;SEP&gt;doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-001</data>
+  <data key="d11">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d12">1779777464</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Refund" target="Merchant Administrator">
+  <data key="d7">1.0</data>
+  <data key="d8">Merchant administrator performs the refund operation on orders using the宏鹄管理后台.</data>
+  <data key="d9">execution,operation</data>
+  <data key="d10">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-001</data>
+  <data key="d11">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d12">1779777465</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Refund" target="Duplicate Charge">
+  <data key="d7">1.0</data>
+  <data key="d8">When duplicate charge is identified, a refund is processed for one of the orders if both were paid, or free cancellation if online was unpaid.</data>
+  <data key="d9">corrective action,resolution</data>
+  <data key="d10">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-001</data>
+  <data key="d11">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d12">1779777466</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Refund" target="Charge Without Ride">
+  <data key="d7">1.0</data>
+  <data key="d8">When a driver confirms misoperation leading to charge without ride, a refund is processed directly to the passenger.</data>
+  <data key="d9">corrective action,resolution</data>
+  <data key="d10">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-001</data>
+  <data key="d11">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d12">1779777466</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Passenger" target="Customer Service">
+  <data key="d7">1.0</data>
+  <data key="d8">Customer service can generate a virtual number to contact passengers.</data>
+  <data key="d9">contact,virtual number</data>
+  <data key="d10">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-000</data>
+  <data key="d11">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d12">1779777463</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Customer Service" target="Standard Script">
+  <data key="d7">1.0</data>
+  <data key="d8">Customer Service uses the Standard Script to respond to passenger issues such as lost items, stop distance, invoice, and navigation complaints.</data>
+  <data key="d9">application,uses</data>
+  <data key="d10">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-002</data>
+  <data key="d11">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d12">1779777467</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Customer Service" target="公交集团">
+  <data key="d7">1.0</data>
+  <data key="d8">Customer Service periodically feeds back recorded stop distance issues to the bus group management for stop optimization.</data>
+  <data key="d9">feedback,stop issue</data>
+  <data key="d10">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-002</data>
+  <data key="d11">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d12">1779777468</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Online Order" target="宏鹄管理后台">
+  <data key="d7">1.0</data>
+  <data key="d8">宏鹄管理后台supports the management of online orders, providing refund and cancellation functions.</data>
+  <data key="d9">management,platform</data>
+  <data key="d10">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-001</data>
+  <data key="d11">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d12">1779777465</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Online Order" target="Order Cancellation">
+  <data key="d7">1.0</data>
+  <data key="d8">Order cancellation is only applicable to online orders, with a visible entry when the order is unpaid.</data>
+  <data key="d9">applicable to,closure</data>
+  <data key="d10">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-001</data>
+  <data key="d11">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d12">1779777465</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Offline Order" target="宏鹄管理后台">
+  <data key="d7">1.0</data>
+  <data key="d8">宏鹄管理后台also handles offline orders, though cancellation is not available for them; only refunds can be processed.</data>
+  <data key="d9">management,platform</data>
+  <data key="d10">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-001</data>
+  <data key="d11">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d12">1779777465</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Order Cancellation" target="Merchant Administrator">
+  <data key="d7">1.0</data>
+  <data key="d8">Merchant administrator performs order cancellation, including free and paid types, on online orders.</data>
+  <data key="d9">execution,operation</data>
+  <data key="d10">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-001</data>
+  <data key="d11">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d12">1779777465</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Order Cancellation" target="Paid Order Cancellation">
+  <data key="d7">1.0</data>
+  <data key="d8">Paid order cancellation is a subtype of order cancellation where the passenger still has to pay after the order is closed.</data>
+  <data key="d9">specialization,subtype</data>
+  <data key="d10">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-001</data>
+  <data key="d11">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d12">1779777466</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Free Order Cancellation" target="Duplicate Charge">
+  <data key="d7">1.0</data>
+  <data key="d8">Free order cancellation is used to resolve duplicate charges when the online order is unpaid.</data>
+  <data key="d9">resolution,scenario</data>
+  <data key="d10">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-001</data>
+  <data key="d11">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d12">1779777465</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Free Order Cancellation" target="Charge Without Ride">
+  <data key="d7">1.0</data>
+  <data key="d8">Free order cancellation is applied when a passenger was charged without taking the ride and the online order is unpaid.</data>
+  <data key="d9">resolution,scenario</data>
+  <data key="d10">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-001</data>
+  <data key="d11">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d12">1779777466</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Driver" target="Charge Without Ride">
+  <data key="d7">1.0</data>
+  <data key="d8">Charge without ride may be caused by driver misoperation, such as ending a trip without the passenger boarding.</data>
+  <data key="d9">causation,involvement</data>
+  <data key="d10">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-001</data>
+  <data key="d11">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d12">1779777466</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Driver Service Issue" target="Standard Script">
+  <data key="d7">1.0</data>
+  <data key="d8">Standard script is used to initially respond to driver service issues, calming the passenger while investigation proceeds.</data>
+  <data key="d9">appeasement,response</data>
+  <data key="d10">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-001</data>
+  <data key="d11">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d12">1779777466</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Early Drop-off Fare Issue" target="网约公交">
+  <data key="d7">1.0</data>
+  <data key="d8">Early drop-off fare issue stems from the fixed fare policy of网约公交, where fares do not change even if the passenger alights early.</data>
+  <data key="d9">fixed fare,policy</data>
+  <data key="d10">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-001</data>
+  <data key="d11">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d12">1779777466</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Early Drop-off Fare Issue" target="Standard Script">
+  <data key="d7">1.0</data>
+  <data key="d8">Standard script is used to respond to passengers regarding early drop-off fare issues, explaining the fixed fare policy and suggesting negotiation with the driver.</data>
+  <data key="d9">customer service,response</data>
+  <data key="d10">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-001</data>
+  <data key="d11">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d12">1779777466</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Early Drop-off Fare Issue" target="公交公司">
+  <data key="d7">1.0</data>
+  <data key="d8">The final handling of early drop-off fare issues, especially when the passenger strongly disagrees, is determined by the bus company (公交公司).</data>
+  <data key="d9">authority,decision</data>
+  <data key="d10">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-001</data>
+  <data key="d11">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d12">1779777466</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Lost Item" target="Standard Script">
+  <data key="d7">2.0</data>
+  <data key="d8">Standard script is used to reassure passengers who have lost items, informing them that a search has been initiated.&lt;SEP&gt;Standard Script is used to comfort passengers reporting Lost Item complaints.</data>
+  <data key="d9">handling procedure,reassurance,response</data>
+  <data key="d10">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-001&lt;SEP&gt;doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-002</data>
+  <data key="d11">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d12">1779777466</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Standard Script" target="Stop Too Far">
+  <data key="d7">1.0</data>
+  <data key="d8">Standard Script is used to explain and apologize for Stop Too Far issues.</data>
+  <data key="d9">handling procedure</data>
+  <data key="d10">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-002</data>
+  <data key="d11">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d12">1779777466</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Standard Script" target="Invoice Issue">
+  <data key="d7">1.0</data>
+  <data key="d8">Standard Script provides the invoice application path for Invoice Issue inquiries.</data>
+  <data key="d9">handling procedure</data>
+  <data key="d10">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-002</data>
+  <data key="d11">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d12">1779777466</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Standard Script" target="Navigation Unreasonable">
+  <data key="d7">1.0</data>
+  <data key="d8">Standard Script is used initially to comfort passengers regarding Navigation Unreasonable complaints.</data>
+  <data key="d9">handling procedure</data>
+  <data key="d10">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-002</data>
+  <data key="d11">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d12">1779777467</data>
+  <data key="d13"></data>
+</edge>
+<edge source="网约公交" target="滴滴出行">
+  <data key="d7">1.0</data>
+  <data key="d8">网约公交is a service accessed through the滴滴出行app or mini-program for ordering invoices.</data>
+  <data key="d9">service platform</data>
+  <data key="d10">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-002</data>
+  <data key="d11">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d12">1779777466</data>
+  <data key="d13"></data>
+</edge>
+<edge source="网约公交" target="公交集团">
+  <data key="d7">1.0</data>
+  <data key="d8">公交集团manages the网约公交service and handles stop location feedback and partial refunds.</data>
+  <data key="d9">management,operation</data>
+  <data key="d10">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-002</data>
+  <data key="d11">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d12">1779777466</data>
+  <data key="d13"></data>
+</edge>
+<edge source="滴滴出行" target="公交集团">
+  <data key="d7">1.0</data>
+  <data key="d8">滴滴出行business personnel can provide support and communication for bus company issues.</data>
+  <data key="d9">business collaboration</data>
+  <data key="d10">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-002</data>
+  <data key="d11">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d12">1779777468</data>
+  <data key="d13"></data>
+</edge>
+<edge source="公交集团" target="电子税务局">
+  <data key="d7">1.0</data>
+  <data key="d8">公交集团must ensure that billing account personnel periodically perform Facial Recognition Authentication on the电子税务局to resolve invoice errors.</data>
+  <data key="d9">tax compliance</data>
+  <data key="d10">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-002</data>
+  <data key="d11">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d12">1779777467</data>
+  <data key="d13"></data>
+</edge>
+<edge source="公交集团" target="Partial Refund">
+  <data key="d7">1.0</data>
+  <data key="d8">公交集团can decide to apply Partial Refund as a resolution for strongly disputed Navigation Unreasonable complaints.</data>
+  <data key="d9">discretionary resolution</data>
+  <data key="d10">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-002</data>
+  <data key="d11">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d12">1779777467</data>
+  <data key="d13"></data>
+</edge>
+<edge source="电子税务局" target="Invoice Issue">
+  <data key="d7">1.0</data>
+  <data key="d8">Invoice Issue exceptions may require re-authentication on the电子税务局via Facial Recognition Authentication.</data>
+  <data key="d9">exception resolution</data>
+  <data key="d10">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-002</data>
+  <data key="d11">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d12">1779777467</data>
+  <data key="d13"></data>
+</edge>
+<edge source="电子税务局" target="Facial Recognition Authentication">
+  <data key="d7">1.0</data>
+  <data key="d8">Facial Recognition Authentication is a required periodic login procedure for accessing the电子税务局.</data>
+  <data key="d9">security requirement</data>
+  <data key="d10">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-002</data>
+  <data key="d11">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d12">1779777467</data>
+  <data key="d13"></data>
+</edge>
+<edge source="网约公交乘客端培训手册" target="Product Issues">
+  <data key="d7">1.0</data>
+  <data key="d8">网约公交乘客端培训手册contains a knowledge base of common Product Issues responses.</data>
+  <data key="d9">knowledge resource</data>
+  <data key="d10">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-002</data>
+  <data key="d11">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d12">1779777467</data>
+  <data key="d13"></data>
+</edge>
+<edge source="Navigation Unreasonable" target="Partial Refund">
+  <data key="d7">1.0</data>
+  <data key="d8">Partial Refund is a resolution method used for Navigation Unreasonable complaints.</data>
+  <data key="d9">resolution method</data>
+  <data key="d10">doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-002</data>
+  <data key="d11">网约公交客服管理·商户培训手册V20250905.pdf</data>
+  <data key="d12">1779777468</data>
+  <data key="d13"></data>
+</edge>
+</graph></graphml>

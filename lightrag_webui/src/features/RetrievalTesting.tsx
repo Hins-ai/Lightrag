@@ -9,7 +9,7 @@ import { useSettingsStore } from '@/stores/settings'
 import { useDebounce } from '@/hooks/useDebounce'
 import QuerySettings from '@/components/retrieval/QuerySettings'
 import { ChatMessage, MessageWithError } from '@/components/retrieval/ChatMessage'
-import { EraserIcon, SendIcon, CopyIcon } from 'lucide-react'
+import { EraserIcon, CopyIcon, Sparkles, MessageSquare } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { toast } from 'sonner'
 import { copyToClipboard } from '@/utils/clipboard'
@@ -686,48 +686,60 @@ export default function RetrievalTesting() {
   }, [t])
 
   return (
-    <div className="flex size-full gap-2 px-2 pb-12 overflow-hidden">
-      <div className="flex grow flex-col gap-4">
+    <div className="flex size-full gap-3 px-3 pb-12 overflow-hidden">
+      <div className="flex grow flex-col gap-3">
         <div className="relative grow">
           <div
             ref={messagesContainerRef}
-            className="bg-primary-foreground/60 absolute inset-0 flex flex-col overflow-auto rounded-lg border p-2"
+            className="absolute inset-0 flex flex-col overflow-auto rounded-2xl border border-border/60 bg-gradient-to-b from-muted/30 to-transparent p-3 shadow-sm"
             onClick={handleMessagesContainerClick}
           >
-            <div className="flex min-h-0 flex-1 flex-col gap-2">
+            <div className="flex min-h-0 flex-1 flex-col gap-3">
               {messages.length === 0 ? (
-                <div className="text-muted-foreground flex h-full items-center justify-center text-lg">
-                  {t('retrievePanel.retrieval.startPrompt')}
+                <div className="flex h-full flex-col items-center justify-center gap-4 text-muted-foreground animate-fade-in">
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-primary/10 blur-2xl rounded-full scale-150" />
+                    <div className="relative flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/10 to-accent/10 border border-primary/20">
+                      <MessageSquare className="size-7 text-primary/60" />
+                    </div>
+                  </div>
+                  <div className="text-center space-y-1">
+                    <p className="text-base font-medium text-foreground/80">
+                      {t('retrievePanel.retrieval.startPrompt')}
+                    </p>
+                    <p className="text-xs text-muted-foreground/70 max-w-[300px]">
+                      Ask anything about your documents. Use /mode prefix to switch query modes.
+                    </p>
+                  </div>
                 </div>
               ) : (
-                messages.map((message) => { // Remove unused idx
-                  // isComplete logic is now handled internally based on message.mermaidRendered
+                messages.map((message) => {
                   return (
                     <div
-                      key={message.id} // Use stable ID for key
+                      key={message.id}
                       className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'} items-end gap-2`}
                     >
                       {message.role === 'user' && (
                         <Button
                           onClick={() => handleCopyMessage(message)}
-                          className="mb-2 size-6 rounded-md opacity-60 transition-opacity hover:opacity-100 shrink-0"
+                          className="mb-2 size-7 rounded-lg opacity-40 transition-all hover:opacity-100 hover:bg-primary/10 shrink-0"
                           tooltip={t('retrievePanel.chatMessage.copyTooltip')}
                           variant="ghost"
                           size="icon"
                         >
-                          <CopyIcon className="size-4" />
+                          <CopyIcon className="size-3.5" />
                         </Button>
                       )}
                       <ChatMessage message={message} isTabActive={isRetrievalTabActive} />
                       {message.role === 'assistant' && (
                         <Button
                           onClick={() => handleCopyMessage(message)}
-                          className="mb-2 size-6 rounded-md opacity-60 transition-opacity hover:opacity-100 shrink-0"
+                          className="mb-2 size-7 rounded-lg opacity-40 transition-all hover:opacity-100 hover:bg-muted shrink-0"
                           tooltip={t('retrievePanel.chatMessage.copyTooltip')}
                           variant="ghost"
                           size="icon"
                         >
-                          <CopyIcon className="size-4" />
+                          <CopyIcon className="size-3.5" />
                         </Button>
                       )}
                     </div>
@@ -741,7 +753,7 @@ export default function RetrievalTesting() {
 
         <form
           onSubmit={handleSubmit}
-          className="flex shrink-0 items-center gap-2"
+          className="flex shrink-0 items-end gap-2"
           autoComplete="on"
           method="post"
           action="#"
@@ -751,13 +763,13 @@ export default function RetrievalTesting() {
           <input type="submit" style={{ display: 'none' }} tabIndex={-1} />
           <Button
             type="button"
-            variant="outline"
+            variant="ghost"
             onClick={clearMessages}
             disabled={isLoading}
-            size="sm"
+            size="icon"
+            className="shrink-0 rounded-xl hover:bg-destructive/10 hover:text-destructive transition-colors"
           >
-            <EraserIcon />
-            {t('retrievePanel.retrieval.clear')}
+            <EraserIcon className="size-4" />
           </Button>
           <div className="flex-1 relative">
             <label htmlFor="query-input" className="sr-only">
@@ -768,7 +780,7 @@ export default function RetrievalTesting() {
                 ref={inputRef as React.RefObject<HTMLTextAreaElement>}
                 id="query-input"
                 autoComplete="on"
-                className="w-full min-h-[40px] max-h-[120px] overflow-y-auto"
+                className="w-full min-h-[44px] max-h-[120px] overflow-y-auto rounded-xl border-border/60 bg-background/80 backdrop-blur-sm focus:border-primary/50 focus:ring-2 focus:ring-primary/10 transition-all focus-ring-glow"
                 value={inputValue}
                 onChange={handleChange}
                 onKeyDown={handleKeyDown}
@@ -779,7 +791,7 @@ export default function RetrievalTesting() {
                 style={{
                   resize: 'none',
                   height: 'auto',
-                  minHeight: '40px',
+                  minHeight: '44px',
                   maxHeight: '120px'
                 }}
                 onInput={(e: React.FormEvent<HTMLTextAreaElement>) => {
@@ -795,7 +807,7 @@ export default function RetrievalTesting() {
                 ref={inputRef as React.RefObject<HTMLInputElement>}
                 id="query-input"
                 autoComplete="on"
-                className="w-full"
+                className="w-full h-11 rounded-xl border-border/60 bg-background/80 backdrop-blur-sm focus:border-primary/50 focus:ring-2 focus:ring-primary/10 transition-all focus-ring-glow"
                 value={inputValue}
                 onChange={handleChange}
                 onKeyDown={handleKeyDown}
@@ -806,12 +818,21 @@ export default function RetrievalTesting() {
             )}
             {/* Error message below input */}
             {inputError && (
-              <div className="absolute left-0 top-full mt-1 text-xs text-red-500">{inputError}</div>
+              <div className="absolute left-0 top-full mt-1.5 text-xs text-red-500 animate-fade-in">{inputError}</div>
             )}
           </div>
-          <Button type="submit" variant="default" disabled={isLoading} size="sm">
-            <SendIcon />
-            {t('retrievePanel.retrieval.send')}
+          <Button
+            type="submit"
+            variant="gradient"
+            disabled={isLoading}
+            size="icon"
+            className="shrink-0 size-11 rounded-xl shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-shadow"
+          >
+            {isLoading ? (
+              <span className="spinner-ring size-4 border-2" />
+            ) : (
+              <Sparkles className="size-4" />
+            )}
           </Button>
         </form>
       </div>

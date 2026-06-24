@@ -1,0 +1,29 @@
+{
+  "doc-2b3a06f7135e2b57c94c1307b69cc5a4": {
+    "status": "processed",
+    "content_summary": "⽹约公交客服管理·商⼾培训⼿册V20250811\n• 背景：客服问题全部由公交集团客服收⼝、处理全部事项\n现介绍⼯具宏鹄后台客服主要功能及针对主要客诉问题的解决⽅案作出⽅案⼿册，供商⼾参考\n\n⼀、宏鹄后台主要客服功能介绍\n\n为便于公交集团及时有效处理各类客诉问题，⽬前宏鹄管理后台⽀持「⽣成虚拟号联系乘客」、「退\n款」及「关单」（包含免费关单、付款关单两类模式）三类功能，具体功能说明如下\n\n• 操作⼊⼝：宏鹄管理后台\nhttps://workbench-saas.xiaojukeji.com /#...",
+    "content_length": 3059,
+    "created_at": "2026-05-26T06:34:33.203770+00:00",
+    "updated_at": "2026-05-26T06:37:48.693222+00:00",
+    "file_path": "网约公交客服管理·商户培训手册V20250905.pdf",
+    "track_id": "upload_20260526_143431_45cef019",
+    "content_hash": "9ef326c0df5c3dc818c20e028a6d70c8",
+    "metadata": {
+      "process_options": "R",
+      "parsing_start_time": 1779777273,
+      "analyzing_start_time": 1779777273,
+      "processing_start_time": 1779777273,
+      "processing_end_time": 1779777468,
+      "parse_format": "raw",
+      "parse_engine": "legacy",
+      "chunking_method": "recursive_character",
+      "chunk_opts": "size=1200, seps=['\\n\\n', '\\n', '。', '！', '？', '；', '，', ' ', ''], overlap=100"
+    },
+    "chunks_count": 3,
+    "chunks_list": [
+      "doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-000",
+      "doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-001",
+      "doc-2b3a06f7135e2b57c94c1307b69cc5a4-chunk-002"
+    ]
+  }
+}

@@ -2169,6 +2169,46 @@ def create_app(args):
             "webui_description": webui_description,
         }
 
+    @app.post("/change-password", dependencies=[Depends(combined_auth)])
+    async def change_password(request: Request):
+        body = await request.json()
+        current_password = body.get("current_password", "")
+        new_password = body.get("new_password", "")
+
+        if not current_password or not new_password:
+            raise HTTPException(status_code=400, detail="Missing required fields")
+        if len(new_password) < 6:
+            raise HTTPException(status_code=400, detail="New password must be at least 6 characters")
+
+        # Get username from token
+        token = request.headers.get("Authorization", "").removeprefix("Bearer ").strip()
+        token_info = auth_handler.validate_token(token)
+        username = token_info["username"]
+
+        if not auth_handler.verify_password(username, current_password):
+            raise HTTPException(status_code=401, detail="Current password is incorrect")
+
+        # Update in-memory password
+        from lightrag.api.passwords import hash_password
+        auth_handler.accounts[username] = hash_password(new_password)
+
+        # Write back to .env file
+        env_path = Path(".env")
+        if env_path.exists():
+            content = env_path.read_text(encoding="utf-8")
+            import re as _re
+            # Rebuild AUTH_ACCOUNTS value with updated password
+            accounts_str = ",".join(f"{u}:{p}" for u, p in auth_handler.accounts.items())
+            content = _re.sub(
+                r"^AUTH_ACCOUNTS=.*$",
+                f"AUTH_ACCOUNTS='{accounts_str}'",
+                content,
+                flags=_re.MULTILINE,
+            )
+            env_path.write_text(content, encoding="utf-8")
+
+        return {"message": "Password changed successfully"}
+
     @app.get(
         "/health",
         dependencies=[Depends(combined_auth)],
